@@ -16,6 +16,8 @@ public interface SongRepository extends CrudRepository<Song, Long>{
 	
 	public List<Song> findTop10ByOrderByRatingDesc();
 	
+	public Long deleteByTitleStartingWith(String search);
+	
 	public void deleteById(Long id);
 
 }

@@ -26,6 +26,10 @@ public class SongService {
 		return songRepo.findTop10ByOrderByRatingDesc();
 	}
 	
+	public List<Song> findByArtist(String search){
+		return songRepo.findByArtist(search);
+	}
+	
 	public void deleteSong(Long id) {
 		songRepo.deleteById(id);
 	}

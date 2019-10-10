@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kat.lookify.models.Song;
 import com.kat.lookify.services.SongService;
@@ -43,6 +44,13 @@ public class SongController {
         List<Song> topSongs = songService.topRated();
         model.addAttribute("topSongs", topSongs);
         return "/songs/topSongs.jsp";
+    }
+    
+    @RequestMapping("/songs/by")
+    public String artistSongs(Model model, @RequestParam(value="artist", required=false) String name) {
+        List<Song> artistSongs = songService.findByArtist(name);
+        model.addAttribute("artistSongs", artistSongs);
+        return "/songs/artistSongs.jsp";
     }
     
     @RequestMapping("/songs/new")
